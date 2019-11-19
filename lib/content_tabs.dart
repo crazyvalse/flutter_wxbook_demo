@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ContentTabs extends StatefulWidget {
+  // 1. 创建一个pageChanged 回调方法
+  final ValueChanged<int> pageChangedCallBack;
+
+  // 2. 在构造函数这里注入实例
+  const ContentTabs({Key key, this.pageChangedCallBack}) : super(key: key);
   @override
   _ContentTabsState createState() => _ContentTabsState();
 }
@@ -19,9 +24,8 @@ class _ContentTabsState extends State<ContentTabs> {
           // Tab 切换用的类
           child: PageView(
             controller: _pageController,
-            onPageChanged: (int page){
-              print(page);
-            },
+            // 3. 通过 widget
+            onPageChanged: widget.pageChangedCallBack,
             children: <Widget>[
               _getWidgetItem(),
               _getWidgetItem(),

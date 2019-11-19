@@ -21,7 +21,14 @@ class _AppState extends State<App> {
             Color(0xffe6e7e9),
           ]),
         ),
-        child: ContentTabs(),
+        child: ContentTabs(
+          // 4. 添加callback
+          pageChangedCallBack: (int page){
+            setState(() {
+              _currentIndex = page;
+            });
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         // 解决显示不全的问题
