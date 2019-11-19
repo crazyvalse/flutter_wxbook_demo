@@ -8,6 +8,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   int _currentIndex = 0;
+  // 5.3.6 创建代理的实例
+  final ContentTabsProxy _contentTabsProxy = new ContentTabsProxy();
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,13 @@ class _AppState extends State<App> {
         ),
         child: ContentTabs(
           // 4. 添加callback
-          pageChangedCallBack: (int page){
+          pageChangedCallBack: (int page) {
             setState(() {
               _currentIndex = page;
             });
           },
+          // 5.3.7 把代理传给Tabs
+          contentTabsProxy: _contentTabsProxy,
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -41,6 +45,8 @@ class _AppState extends State<App> {
         ],
         currentIndex: _currentIndex,
         onTap: (int index) {
+          // 5.3.8 监听，并执行跳转；
+          _contentTabsProxy.jumpToPage(index);
           setState(() {
             _currentIndex = index;
           });
