@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_wxbook_demo/search_appbar.dart';
 
 class ContentTabs extends StatefulWidget {
   // 1. 创建一个pageChanged 回调方法
@@ -37,6 +38,8 @@ class _ContentTabsState extends State<ContentTabs> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        // appbar
+        SearchAppBar(),
         // 需要撑开布局
         Expanded(
           // Tab 切换用的类
