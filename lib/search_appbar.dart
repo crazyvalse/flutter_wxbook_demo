@@ -14,7 +14,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(19),
-        color: Colors.white60,
+        color: Colors.white,
       ),
       padding: EdgeInsets.fromLTRB(20, 7, 20, 7),
       // 2. 修正
