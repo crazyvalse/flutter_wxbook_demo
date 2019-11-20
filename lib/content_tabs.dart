@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_wxbook_demo/cards/recommend_card.dart';
+import 'package:flutter_wxbook_demo/cards/share_card.dart';
 import 'package:flutter_wxbook_demo/search_appbar.dart';
 
 class ContentTabs extends StatefulWidget {
@@ -48,10 +50,10 @@ class _ContentTabsState extends State<ContentTabs> {
             // 3. 通过 widget
             onPageChanged: widget.pageChangedCallBack,
             children: <Widget>[
-              _getWidgetItem(),
-              _getWidgetItem(),
-              _getWidgetItem(),
-              _getWidgetItem(),
+              _getWidgetItem(RecommendCard()),
+              _getWidgetItem(ShareCard()),
+              _getWidgetItem(null),
+              _getWidgetItem(null),
             ],
           ),
         )
@@ -59,14 +61,15 @@ class _ContentTabsState extends State<ContentTabs> {
     );
   }
 
-  _getWidgetItem() {
+  _getWidgetItem(Widget widget) {
+    widget ??= Container(
+      decoration: BoxDecoration(
+        color: Colors.blue,
+      ),
+    );
     return Padding(
       padding: EdgeInsets.all(10),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blue,
-        ),
-      ),
+      child: widget,
     );
   }
 }
@@ -74,6 +77,7 @@ class _ContentTabsState extends State<ContentTabs> {
 // 5.3.1 创建一个代理
 class ContentTabsProxy {
   PageController _pageController;
+
   // 5.3.2 创建jumpToPage方法，提供给app调用
   jumpToPage(int page) {
     _pageController?.jumpToPage(page);
