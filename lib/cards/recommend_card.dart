@@ -3,10 +3,10 @@ import 'package:flutter_wxbook_demo/cards/base_card.dart';
 
 class RecommendCard extends BaseCard {
   @override
-  BaseCardState createState() => _RecommendCardState();
+  BaseCardState createState() => RecommendCardState();
 }
 
-class _RecommendCardState extends BaseCardState {
+class RecommendCardState extends BaseCardState {
   @override
   void initState() {
     subtitleColor = Color(0xffb99444);
@@ -27,12 +27,13 @@ class _RecommendCardState extends BaseCardState {
   middleContent() {
     return Expanded(
       child: Container(
-        constraints: BoxConstraints.expand(),
         child: Image.asset(
           'images/card_1.jpg',
           fit: BoxFit.cover,
         ),
         margin: EdgeInsets.only(top: 20),
+        // 适配安卓 - 把图片撑满
+        constraints: BoxConstraints.expand(),
       ),
     );
   }
